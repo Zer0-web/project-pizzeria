@@ -223,6 +223,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -309,6 +310,25 @@
             price += option.price;
           } else if(!optionSelected && option.default){
             price -= option.price;
+          }
+          const selector = '.' + paramId + '-' + optionId;
+          const images = thisProduct.imageWrapper.querySelectorAll(selector);
+
+          if(optionSelected){
+            if(!thisProduct.params[paramId]){
+              thisProduct.params[paramId] = {
+                label: param.label,
+                options: {}
+              };
+            }
+            thisProduct.params[paramId].options[optionId] = option.label;
+            for(let image of images){
+              image.classList.add(classNames.menuProduct.imageVisible);
+            }
+          } else {
+            for(let image of images){
+              image.classList.remove(classNames.menuProduct.imageVisible);
+            }
           }
         }
       }
