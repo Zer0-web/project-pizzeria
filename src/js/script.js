@@ -273,11 +273,11 @@
         input.addEventListener('change', function(){
           thisProduct.processOrder();
         });
-        thisProduct.cartButton.addEventListener('click', function(event){
-          event.preventDefault();
-          thisProduct.processOrder();
-        });
       }
+      thisProduct.cartButton.addEventListener('click', function(event){
+        event.preventDefault();
+        thisProduct.processOrder();
+      });
     }
 
     processOrder(){
@@ -312,8 +312,11 @@
           }
         }
       }
+      /* set the contents of thisProduct.priceElem to be the value of variable price */
+      thisProduct.priceElem.innerHTML = thisProduct.price;
     }
   }
+  
   const app = {
     initMenu: function(){
       const thisApp = this;
