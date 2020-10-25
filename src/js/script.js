@@ -376,8 +376,8 @@
     add(menuProduct){
       const thisCart = this;
 
-      const generateHTML = templates.cartProduct(menuProduct);
-      const generatedDOM = utils.createDOMFromHTML(generateHTML);
+      const generatedHTML = templates.cartProduct(menuProduct);
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       thisCart.dom.productList.appendChild(generatedDOM);
       thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
 
@@ -463,8 +463,10 @@
           cartProduct: thisCartProduct,
         },
       });
+      thisCartProduct.dom.wrapper.dispatchEvent(event);
     }
   }
+
 
   console.log('CartProduct', CartProduct);
   
