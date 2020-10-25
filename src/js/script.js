@@ -397,6 +397,19 @@
       }
 
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+
+      for(let key of thisCart.renderTotalKeys){
+        for(let elem of thisCart.dom[key]){
+          elem.innerHTML = thisCart[key];
+        }
+      }
+    }
+    remove(cartProduct){
+      const thisCart = this;
+      const index = thisCart.products.indexOf(cartProduct);
+      thisCart.products.splice(index, 1);
+      cartProduct.dom.wrapper.remove();
+      this.update();
     }
   }
 
@@ -423,7 +436,7 @@
       thisCartProduct.dom = {};
       
       thisCartProduct.dom.wrapper = element;
-      thisCartProduct.amountWidget = thisCartProduct.wrapper.querySelector(select.cartProduct.amountWidget);
+      thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
       thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
       thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
       thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
@@ -432,11 +445,23 @@
     initAmountWidget(){
       const thisCartProduct = this;
 
-      thisCartProduct.dom.amountWidget = new AmountWidget(thisCartProduct.amountWidget);
-      thisCartProduct.dom.amountWidgetElem.addEventListener('updated', function(){
-        thisCartProduct.dom.amount = thisCartProduct.dom.amountWidget.value;
-        thisCartProduct.price = thisCartProduct.priceSingle*thisCartProduct.dom.amount;
+      thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
+
+      thisCartProduct.dom.amountWidget.addEventListener('updated', function(){
+        thisCartProduct.amount = thisCartProduct.amountWidget.value;
+        thisCartProduct.price = thisCartProduct.priceSingle*thisCartProduct.amount;
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
+      });
+    }
+
+    remove(){
+      const thisCartProduct = this;
+      
+      const event = new CustomEvent('remove', {
+        bubbles: true,
+        detail: {
+          cartProduct: thisCartProduct,
+        },
       });
     }
   }
