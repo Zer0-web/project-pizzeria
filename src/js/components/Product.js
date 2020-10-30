@@ -17,7 +17,7 @@ class Product{
     thisProduct.processOrder();
       
 
-    console.log('new Product: ', thisProduct);
+    //console.log('new Product: ', thisProduct);
   }
   renderInMenu(){
     const thisProduct = this;
@@ -52,7 +52,7 @@ class Product{
     /* START: click event listener to trigger */
     for (let accordion of accordions){
       accordion.addEventListener('click', function(event){
-        console.log('clicked');
+        //console.log('clicked');
         /* prevent default action for event */
         event.preventDefault();
 
@@ -83,7 +83,7 @@ class Product{
 
   initOrderFrom(){
     const thisProduct = this;
-    console.log('orderForm: ', thisProduct);
+    //console.log('orderForm: ', thisProduct);
     thisProduct.form.addEventListener('submit', function(event){
       event.preventDefault();
       thisProduct.processOrder();
@@ -109,7 +109,7 @@ class Product{
     /* set variable price to equal thisProduct.data.price */
     thisProduct.params = {};
     let price = thisProduct.data.price;
-    console.log('price: ', price);
+    //console.log('price: ', price);
     /* START LOOP: for each paramId in thisProduct.data.params */
     for(let paramId in thisProduct.data.params){
       const param = thisProduct.data.params[paramId];
@@ -151,7 +151,7 @@ class Product{
           }
         }
       }
-      console.log('thisProduct.params', thisProduct.params);
+      //console.log('thisProduct.params', thisProduct.params);
     }
     /* multiply prive by amount */
     thisProduct.priceSingle = price;
@@ -160,7 +160,7 @@ class Product{
     /* set the contents of thisProduct.priceElem to be the value of variable price */
     thisProduct.priceElem.innerHTML = thisProduct.price;
 
-    console.log(thisProduct.params);
+    //console.log(thisProduct.params);
   }
   initAmountWidget(){
     const thisProduct = this;

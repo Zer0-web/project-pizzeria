@@ -11,8 +11,8 @@ class AmountWidget{
     thisWidget.setValue(thisWidget.input.value);
     thisWidget.initActions();
 
-    console.log('AmountWidget: ', thisWidget);
-    console.log('constructor arguments:', element);
+    //console.log('AmountWidget: ', thisWidget);
+    //console.log('constructor arguments:', element);
   }
   getElements(element){
     const thisWidget = this;
