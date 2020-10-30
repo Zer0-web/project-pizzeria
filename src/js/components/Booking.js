@@ -3,10 +3,10 @@ import utils from '../utils.js';
 import AmountWidget from './AmountWidget.js';
 
 class Booking{
-  constructor(element){
+  constructor(reservationWidget){
     const thisBooking = this;
 
-    thisBooking.render(element);
+    thisBooking.render(reservationWidget);
     thisBooking.initWidgets();
   }
   render(reservationWidget){
