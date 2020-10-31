@@ -30,6 +30,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "flatpickr": "^4.6.6",
         "json-server": "^0.16.2"
     },
     "devDependencies": {
