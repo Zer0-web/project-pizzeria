@@ -10,8 +10,18 @@ class Booking{
 
     thisBooking.render(reservationWidget);
     thisBooking.initWidgets();
+    //thisBooking.getData();
   }
-  render(reservationWidget){
+  /*getData(){
+    const thisBooking = this;
+
+    const urls = {
+      booking:  settings.db.url,
+      eventsCurrent: settings.db.url,
+      eventsRepeat: settings.db.url,
+    };
+  }*/
+  render(element){
     const thisBooking = this;
     const generatedHTML = templates.bookingWidget();
 
@@ -19,7 +29,7 @@ class Booking{
     
     utils.createDOMFromHTML(generatedHTML);
 
-    thisBooking.dom.wrapper = reservationWidget;
+    thisBooking.dom.wrapper = element;
     thisBooking.dom.wrapper.appendChild(utils.createDOMFromHTML(generatedHTML));
     thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);

@@ -44,7 +44,9 @@ class BaseWidget{
   announce(){
     const thisWidget = this;
 
-    const event = new Event('updated');
+    const event = new CustomEvent('updated',{
+      bubbles: true
+    });
     thisWidget.dom.wrapper.dispatchEvent(event);
   }
 }
