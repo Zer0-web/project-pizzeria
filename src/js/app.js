@@ -4,6 +4,14 @@ import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
 
 const app = {
+  initMainMenu: function(){
+    const thisApp = this;
+
+    thisApp.menu = document.querySelector(select.containerOf.pages).children;
+
+    //thisApp.activatePage(thisApp.pages[0].id);
+  },
+
   initPages: function(){
     const thisApp = this;
 
@@ -113,6 +121,8 @@ const app = {
     //console.log('classNames:', classNames);
     //console.log('settings:', settings);
     //console.log('templates:', templates);
+
+    // thisApp.initMainMenu();
 
     thisApp.initPages();
       

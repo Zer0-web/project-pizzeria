@@ -195,10 +195,20 @@ class Booking{
       date: thisBooking.date,
       hour: thisBooking.hourPicker.value,
       table: parseInt(thisBooking.tablePicked),
+      duration: thisBooking.hoursAmount.value,
+      people: thisBooking.peopleAmount.value,
+      starters: [],
     };
 
     const payload = order;
 
+    for(let starter of thisBooking.dom.starters){
+      console.log('thisBooking.dom.starters');
+      if(starter.checked == true){
+        const starterValue = starter.value;
+        payload.startert.push(starterValue);
+      }
+    }
     const option = {
       method: 'POST',
       headers: {
@@ -212,7 +222,8 @@ class Booking{
       })
       .then(function(parsedResponse){
         console.log('reservation send to API', parsedResponse);
-        thisBooking.getData();
+        thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table);
+        thisBooking.updateDOM();
       });
   }
 
@@ -228,6 +239,8 @@ class Booking{
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starter);
+
 
   }
   initWidgets(){
