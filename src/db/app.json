@@ -255,5 +255,11 @@
       "starters": ["lemonWater"]
     }
   ],
-  "booking": []
+  "data-flickity-options": [
+    {
+      "autoPlay": "true",
+      "prevNextButtons": "false",
+      "setGallerySize": "false"
+    }
+  ]
 }
